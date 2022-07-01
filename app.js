@@ -23,6 +23,6 @@ io.on('connection', (socket) => {
     console.log(socket.id + "ta aqui");
     socket.on('Client_send_pos', (data) => {
         load.push(data)
-        io.emit('send_load_pos', load)
+        io.emit('send_load_pos', load);
     })
 })
