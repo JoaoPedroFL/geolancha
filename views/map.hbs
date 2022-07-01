@@ -30,10 +30,7 @@
             }
         }
         var socket = io('https://geolancha.herokuapp.com/')
-        var watchId = navigator.geolocation.watchPosition({
-            enableHighAccuracy: true,
-            timeout: 5000
-        }, (pos) => {
+        var watchId = navigator.geolocation.watchPosition((pos) => {
             this.state = {
                 location: {
                     x: pos.coords.latitude,
@@ -56,6 +53,9 @@
                 })
             })
             
+        }, error, {
+            enableHighAccuracy: true,
+            timeout: 5000
         });
 
     </script>
