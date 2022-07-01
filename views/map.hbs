@@ -56,7 +56,7 @@
                     .bindPopup("Olá" + i)
                     .openPopup();
 
-                    MARKERITEM.on("move", ()=>{
+                    MARKERITEM.on("viewreset", ()=>{
                         map.removeLayer(MARKERITEM);
                     })
                 })
