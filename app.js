@@ -12,8 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/map', urlencodedParser, (req, res) => {
-    //var pos_x = req.body.pos_x;
-    res.render('map' /*{ p_x: pos_x }*/);
+    res.render('map', { rota: port });
 });
 const port = process.env.PORT || 3000;
 var server = require('http').Server(app);
