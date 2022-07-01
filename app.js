@@ -12,12 +12,12 @@ app.get('/', (req, res) => {
 });
 
 app.post('/map', urlencodedParser, (req, res) => {
-    res.render('map', { rota: port });
+    res.render('map');
 });
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-server.listen(port);
+server.listen(PORT);
 var load = [];
 io.on('connection', (socket) => {
     console.log(socket.id + "ta aqui");

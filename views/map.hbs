@@ -29,7 +29,7 @@
                 y: null
             }
         }
-        var socket = io('http://localhost:{{rota}}')
+        var socket = io('https://geolancha.herokuapp.com/')
         navigator.geolocation.getCurrentPosition((pos) => {
             this.state = {
                 location: {
