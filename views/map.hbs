@@ -30,12 +30,9 @@
             }
         }
         var socket = io('https://geolancha.herokuapp.com/')
-        
         function error(err){
             console.log(err);
         }
-
-        var map;
 
         var watchId = navigator.geolocation.watchPosition((pos) => {
             this.state = {
@@ -47,21 +44,14 @@
             var position = [this.state.location.x, this.state.location.y];
             socket.emit('Client_send_pos', position)
 
-            if(map === undefined){
-                map = L.map('map').setView(position, 13);
-            }else {
-                map.remove();
-                map = L.map('map').setView(position, 13);
-            }
-            
+            var map = L.map('map').setView(position, 13);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
             socket.on('send_load_pos', (data) => {
                 data.forEach(function (i) {
-                    
-                    let MARKERITEM = L.marker(i, {draggable: true}).addTo(map)
+                    L.marker(i).addTo(map)
                     .bindPopup("Olá" + i)
                     .openPopup();
                 })
@@ -69,11 +59,8 @@
             
         }, error, {
             enableHighAccuracy: true,
-            maximumAge: 5000,
             timeout: 5000
         });
-
-        
 
     </script>
 
