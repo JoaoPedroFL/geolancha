@@ -29,8 +29,8 @@
                 y: null
             }
         }
-        var socket = io('https://geolancha.herokuapp.com/')
-        navigator.geolocation.getCurrentPosition((pos) => {
+        var socket = io('localhost:3000')
+        var watchId = navigator.geolocation.watchPosition((pos) => {
             this.state = {
                 location: {
                     x: pos.coords.latitude,
