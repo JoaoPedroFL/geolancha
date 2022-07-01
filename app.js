@@ -15,10 +15,10 @@ app.post('/map', urlencodedParser, (req, res) => {
     //var pos_x = req.body.pos_x;
     res.render('map' /*{ p_x: pos_x }*/);
 });
-
+const port = process.env.PORT || 3000;
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-server.listen(8080);
+server.listen(port);
 var load = [];
 io.on('connection', (socket) => {
     console.log(socket.id + "ta aqui");
