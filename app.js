@@ -22,16 +22,9 @@ var load = [];
 io.on('connection', (socket) => {
     console.log(socket.id + "ta aqui");
     socket.on('Client_send_pos', (data) => {
-
-        if(load.length == 0){
-            load.push(data)
-            console.log(load)
-        }else {
-            load.shift(data)
-            console.log(load)
-        }
-
-        io.emit('send_load_pos', load);
         
+        load.push(data)
+        
+        io.emit('send_load_pos', load);
     })
 })
