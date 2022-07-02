@@ -51,7 +51,7 @@
             }).addTo(map);
             socket.on('send_load_pos', (data) => {
                 data.forEach(function (i) {
-                    L.marker(i).addTo(map)
+                    L.marker(i, {draggable: true}).addTo(map)
                     .bindPopup("Olá" + i)
                     .openPopup();
                 })
@@ -59,6 +59,7 @@
             
         }, error, {
             enableHighAccuracy: true,
+            maximumAge: 0,
             timeout: 5000
         });
 
