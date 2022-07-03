@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.post('/map', urlencodedParser, (req, res) => {
+app.get('/map', urlencodedParser, (req, res) => {
     res.render('map');
 });
 const PORT = process.env.PORT || 3000;
