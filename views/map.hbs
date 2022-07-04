@@ -23,6 +23,14 @@
     
     <script>
 
+        var shipIcon = L.icon({
+            iconUrl: 'ship.png',
+
+            iconSize:     [50, 50], // size of the icon
+            iconAnchor:   [22, 47], // point of the icon which will correspond to marker's location
+            popupAnchor:  [5, -47] // point from which the popup should open   relative to the iconAnchor
+        });
+
         state = {
             location: {
                 x: null,
@@ -49,18 +57,16 @@
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
-            var locationMarker = L.marker([0,0]).addTo(map)
+            var locationMarker = L.marker([0,0], {icon: shipIcon}).addTo(map)
             socket.on('send_load_pos', (data) => {
                 data.forEach(function (i) {
-                    console.log(i)
                     locationMarker.setLatLng(i).update();
                 })
             })
             
         }, error, {
             enableHighAccuracy: true,
-            maximumAge: 0,
-            timeout: 5000
+            maximumAge: 0
         });
 
     </script>
